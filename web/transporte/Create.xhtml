@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransporteCreateDlg" widgetVar="TransporteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTransporteTitle}">
+            <h:form id="TransporteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transporteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTransporteLabel_idtransporte}" for="idtransporte" />
+                        <p:inputText id="idtransporte" value="#{transporteController.selected.idtransporte}" title="#{bundle.CreateTransporteTitle_idtransporte}" required="true" requiredMessage="#{bundle.CreateTransporteRequiredMessage_idtransporte}"/>
+                        <p:outputLabel value="#{bundle.CreateTransporteLabel_transporte}" for="transporte" />
+                        <p:inputText id="transporte" value="#{transporteController.selected.transporte}" title="#{bundle.CreateTransporteTitle_transporte}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{transporteController.create}" value="#{bundle.Save}" update="display,:TransporteListForm:datalist,:growl" oncomplete="handleSubmit(args,'TransporteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TransporteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterialusoViewDlg" widgetVar="MaterialusoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMaterialusoTitle}">
+            <h:form id="MaterialusoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materialusoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMaterialusoLabel_idmaterialuso}"/>
+                        <h:outputText value="#{materialusoController.selected.idmaterialuso}" title="#{bundle.ViewMaterialusoTitle_idmaterialuso}"/>
+                        <h:outputText value="#{bundle.ViewMaterialusoLabel_idmaterial}"/>
+                        <h:outputText value="#{materialusoController.selected.idmaterial}" title="#{bundle.ViewMaterialusoTitle_idmaterial}"/>
+                        <h:outputText value="#{bundle.ViewMaterialusoLabel_idcriteriouso}"/>
+                        <h:outputText value="#{materialusoController.selected.idcriteriouso}" title="#{bundle.ViewMaterialusoTitle_idcriteriouso}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MaterialusoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParroquiaEditDlg" widgetVar="ParroquiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditParroquiaTitle}">
+            <h:form id="ParroquiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parroquiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditParroquiaLabel_idparroquia}" for="idparroquia" />
+                        <p:inputText id="idparroquia" value="#{parroquiaController.selected.idparroquia}" title="#{bundle.EditParroquiaTitle_idparroquia}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_idparroquia}"/>
+                        <p:outputLabel value="#{bundle.EditParroquiaLabel_parroquia}" for="parroquia" />
+                        <p:inputText id="parroquia" value="#{parroquiaController.selected.parroquia}" title="#{bundle.EditParroquiaTitle_parroquia}" />
+                        <p:outputLabel value="#{bundle.EditParroquiaLabel_idmunicipio}" for="idmunicipio" />
+                        <p:selectOneMenu id="idmunicipio" value="#{parroquiaController.selected.idmunicipio}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"
+                                           var="idmunicipioItem"
+                                           itemValue="#{idmunicipioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parroquiaController.update}" value="#{bundle.Save}" update="display,:ParroquiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParroquiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParroquiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterialusoCreateDlg" widgetVar="MaterialusoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMaterialusoTitle}">
+            <h:form id="MaterialusoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materialusoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMaterialusoLabel_idmaterialuso}" for="idmaterialuso" />
+                        <p:inputText id="idmaterialuso" value="#{materialusoController.selected.idmaterialuso}" title="#{bundle.CreateMaterialusoTitle_idmaterialuso}" required="true" requiredMessage="#{bundle.CreateMaterialusoRequiredMessage_idmaterialuso}"/>
+                        <p:outputLabel value="#{bundle.CreateMaterialusoLabel_idmaterial}" for="idmaterial" />
+                        <p:selectOneMenu id="idmaterial" value="#{materialusoController.selected.idmaterial}" >
+                            <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
+                                           var="idmaterialItem"
+                                           itemValue="#{idmaterialItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMaterialusoLabel_idcriteriouso}" for="idcriteriouso" />
+                        <p:selectOneMenu id="idcriteriouso" value="#{materialusoController.selected.idcriteriouso}" >
+                            <f:selectItems value="#{criteriousoController.itemsAvailableSelectOne}"
+                                           var="idcriteriousoItem"
+                                           itemValue="#{idcriteriousoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{materialusoController.create}" value="#{bundle.Save}" update="display,:MaterialusoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MaterialusoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MaterialusoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

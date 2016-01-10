@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductorEditDlg" widgetVar="ProductorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProductorTitle}">
+            <h:form id="ProductorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productorController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProductorLabel_codigoproductor}" for="codigoproductor" />
+                        <p:inputText id="codigoproductor" value="#{productorController.selected.codigoproductor}" title="#{bundle.EditProductorTitle_codigoproductor}" required="true" requiredMessage="#{bundle.EditProductorRequiredMessage_codigoproductor}"/>
+                        <p:outputLabel value="#{bundle.EditProductorLabel_rif}" for="rif" />
+                        <p:inputText id="rif" value="#{productorController.selected.rif}" title="#{bundle.EditProductorTitle_rif}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_razonsocial}" for="razonsocial" />
+                        <p:inputText id="razonsocial" value="#{productorController.selected.razonsocial}" title="#{bundle.EditProductorTitle_razonsocial}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_telefonos}" for="telefonos" />
+                        <p:inputText id="telefonos" value="#{productorController.selected.telefonos}" title="#{bundle.EditProductorTitle_telefonos}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{productorController.selected.email}" title="#{bundle.EditProductorTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_direccionfiscal}" for="direccionfiscal" />
+                        <p:inputText id="direccionfiscal" value="#{productorController.selected.direccionfiscal}" title="#{bundle.EditProductorTitle_direccionfiscal}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_idparroquia}" for="idparroquia" />
+                        <p:inputText id="idparroquia" value="#{productorController.selected.idparroquia}" title="#{bundle.EditProductorTitle_idparroquia}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_paginaweb}" for="paginaweb" />
+                        <p:inputText id="paginaweb" value="#{productorController.selected.paginaweb}" title="#{bundle.EditProductorTitle_paginaweb}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_aportesocial}" for="aportesocial" />
+                        <p:inputText id="aportesocial" value="#{productorController.selected.aportesocial}" title="#{bundle.EditProductorTitle_aportesocial}" />
+                        <p:outputLabel value="#{bundle.EditProductorLabel_fechainscripcion}" for="fechainscripcion" />
+                        <p:calendar id="fechainscripcion" pattern="MM/dd/yyyy" value="#{productorController.selected.fechainscripcion}" title="#{bundle.EditProductorTitle_fechainscripcion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditProductorLabel_idtransporte}" for="idtransporte" />
+                        <p:selectOneMenu id="idtransporte" value="#{productorController.selected.idtransporte}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{transporteController.itemsAvailableSelectOne}"
+                                           var="idtransporteItem"
+                                           itemValue="#{idtransporteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductorLabel_idcriterioproceso}" for="idcriterioproceso" />
+                        <p:selectOneMenu id="idcriterioproceso" value="#{productorController.selected.idcriterioproceso}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{criterioprocesoController.itemsAvailableSelectOne}"
+                                           var="idcriterioprocesoItem"
+                                           itemValue="#{idcriterioprocesoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductorLabel_idclasificacion}" for="idclasificacion" />
+                        <p:selectOneMenu id="idclasificacion" value="#{productorController.selected.idclasificacion}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clasificacionproductorController.itemsAvailableSelectOne}"
+                                           var="idclasificacionItem"
+                                           itemValue="#{idclasificacionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductorLabel_idnivelcontrato}" for="idnivelcontrato" />
+                        <p:selectOneMenu id="idnivelcontrato" value="#{productorController.selected.idnivelcontrato}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{nivelcontratoController.itemsAvailableSelectOne}"
+                                           var="idnivelcontratoItem"
+                                           itemValue="#{idnivelcontratoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductorLabel_idestatus}" for="idestatus" />
+                        <p:selectOneMenu id="idestatus" value="#{productorController.selected.idestatus}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estatusController.itemsAvailableSelectOne}"
+                                           var="idestatusItem"
+                                           itemValue="#{idestatusItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productorController.update}" value="#{bundle.Save}" update="display,:ProductorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProductorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

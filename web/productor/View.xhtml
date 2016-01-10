@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductorViewDlg" widgetVar="ProductorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProductorTitle}">
+            <h:form id="ProductorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProductorLabel_codigoproductor}"/>
+                        <h:outputText value="#{productorController.selected.codigoproductor}" title="#{bundle.ViewProductorTitle_codigoproductor}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_rif}"/>
+                        <h:outputText value="#{productorController.selected.rif}" title="#{bundle.ViewProductorTitle_rif}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_razonsocial}"/>
+                        <h:outputText value="#{productorController.selected.razonsocial}" title="#{bundle.ViewProductorTitle_razonsocial}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_telefonos}"/>
+                        <h:outputText value="#{productorController.selected.telefonos}" title="#{bundle.ViewProductorTitle_telefonos}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_email}"/>
+                        <h:outputText value="#{productorController.selected.email}" title="#{bundle.ViewProductorTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_direccionfiscal}"/>
+                        <h:outputText value="#{productorController.selected.direccionfiscal}" title="#{bundle.ViewProductorTitle_direccionfiscal}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_idparroquia}"/>
+                        <h:outputText value="#{productorController.selected.idparroquia}" title="#{bundle.ViewProductorTitle_idparroquia}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_paginaweb}"/>
+                        <h:outputText value="#{productorController.selected.paginaweb}" title="#{bundle.ViewProductorTitle_paginaweb}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_aportesocial}"/>
+                        <h:outputText value="#{productorController.selected.aportesocial}" title="#{bundle.ViewProductorTitle_aportesocial}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_fechainscripcion}"/>
+                        <h:outputText value="#{productorController.selected.fechainscripcion}" title="#{bundle.ViewProductorTitle_fechainscripcion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProductorLabel_idtransporte}"/>
+                        <h:outputText value="#{productorController.selected.idtransporte}" title="#{bundle.ViewProductorTitle_idtransporte}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_idcriterioproceso}"/>
+                        <h:outputText value="#{productorController.selected.idcriterioproceso}" title="#{bundle.ViewProductorTitle_idcriterioproceso}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_idclasificacion}"/>
+                        <h:outputText value="#{productorController.selected.idclasificacion}" title="#{bundle.ViewProductorTitle_idclasificacion}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_idnivelcontrato}"/>
+                        <h:outputText value="#{productorController.selected.idnivelcontrato}" title="#{bundle.ViewProductorTitle_idnivelcontrato}"/>
+                        <h:outputText value="#{bundle.ViewProductorLabel_idestatus}"/>
+                        <h:outputText value="#{productorController.selected.idestatus}" title="#{bundle.ViewProductorTitle_idestatus}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProductorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

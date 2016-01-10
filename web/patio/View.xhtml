@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PatioViewDlg" widgetVar="PatioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPatioTitle}">
+            <h:form id="PatioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{patioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPatioLabel_idpatio}"/>
+                        <h:outputText value="#{patioController.selected.idpatio}" title="#{bundle.ViewPatioTitle_idpatio}"/>
+                        <h:outputText value="#{bundle.ViewPatioLabel_descripcion}"/>
+                        <h:outputText value="#{patioController.selected.descripcion}" title="#{bundle.ViewPatioTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewPatioLabel_direccion}"/>
+                        <h:outputText value="#{patioController.selected.direccion}" title="#{bundle.ViewPatioTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewPatioLabel_codigoproductor}"/>
+                        <h:outputText value="#{patioController.selected.codigoproductor}" title="#{bundle.ViewPatioTitle_codigoproductor}"/>
+                        <h:outputText value="#{bundle.ViewPatioLabel_idparroquia}"/>
+                        <h:outputText value="#{patioController.selected.idparroquia}" title="#{bundle.ViewPatioTitle_idparroquia}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PatioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

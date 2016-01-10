@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AutorizadoCreateDlg" widgetVar="AutorizadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAutorizadoTitle}">
+            <h:form id="AutorizadoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{autorizadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAutorizadoLabel_cedula}" for="cedula" />
+                        <p:inputText id="cedula" value="#{autorizadoController.selected.cedula}" title="#{bundle.CreateAutorizadoTitle_cedula}" required="true" requiredMessage="#{bundle.CreateAutorizadoRequiredMessage_cedula}"/>
+                        <p:outputLabel value="#{bundle.CreateAutorizadoLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{autorizadoController.selected.nombres}" title="#{bundle.CreateAutorizadoTitle_nombres}" />
+                        <p:outputLabel value="#{bundle.CreateAutorizadoLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{autorizadoController.selected.apellidos}" title="#{bundle.CreateAutorizadoTitle_apellidos}" />
+                        <p:outputLabel value="#{bundle.CreateAutorizadoLabel_telefonos}" for="telefonos" />
+                        <p:inputText id="telefonos" value="#{autorizadoController.selected.telefonos}" title="#{bundle.CreateAutorizadoTitle_telefonos}" />
+                        <p:outputLabel value="#{bundle.CreateAutorizadoLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{autorizadoController.selected.correo}" title="#{bundle.CreateAutorizadoTitle_correo}" />
+                        <p:outputLabel value="#{bundle.CreateAutorizadoLabel_codigoproductor}" for="codigoproductor" />
+                        <p:selectOneMenu id="codigoproductor" value="#{autorizadoController.selected.codigoproductor}" >
+                            <f:selectItems value="#{productorController.itemsAvailableSelectOne}"
+                                           var="codigoproductorItem"
+                                           itemValue="#{codigoproductorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{autorizadoController.create}" value="#{bundle.Save}" update="display,:AutorizadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'AutorizadoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AutorizadoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

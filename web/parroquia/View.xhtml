@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParroquiaViewDlg" widgetVar="ParroquiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewParroquiaTitle}">
+            <h:form id="ParroquiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parroquiaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewParroquiaLabel_idparroquia}"/>
+                        <h:outputText value="#{parroquiaController.selected.idparroquia}" title="#{bundle.ViewParroquiaTitle_idparroquia}"/>
+                        <h:outputText value="#{bundle.ViewParroquiaLabel_parroquia}"/>
+                        <h:outputText value="#{parroquiaController.selected.parroquia}" title="#{bundle.ViewParroquiaTitle_parroquia}"/>
+                        <h:outputText value="#{bundle.ViewParroquiaLabel_idmunicipio}"/>
+                        <h:outputText value="#{parroquiaController.selected.idmunicipio}" title="#{bundle.ViewParroquiaTitle_idmunicipio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ParroquiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

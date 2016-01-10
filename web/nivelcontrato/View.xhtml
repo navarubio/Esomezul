@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NivelcontratoViewDlg" widgetVar="NivelcontratoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewNivelcontratoTitle}">
+            <h:form id="NivelcontratoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{nivelcontratoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewNivelcontratoLabel_idnivelcontrato}"/>
+                        <h:outputText value="#{nivelcontratoController.selected.idnivelcontrato}" title="#{bundle.ViewNivelcontratoTitle_idnivelcontrato}"/>
+                        <h:outputText value="#{bundle.ViewNivelcontratoLabel_descripcionnivel}"/>
+                        <h:outputText value="#{nivelcontratoController.selected.descripcionnivel}" title="#{bundle.ViewNivelcontratoTitle_descripcionnivel}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="NivelcontratoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstatusEditDlg" widgetVar="EstatusEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEstatusTitle}">
+            <h:form id="EstatusEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estatusController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEstatusLabel_idestatus}" for="idestatus" />
+                        <p:inputText id="idestatus" value="#{estatusController.selected.idestatus}" title="#{bundle.EditEstatusTitle_idestatus}" required="true" requiredMessage="#{bundle.EditEstatusRequiredMessage_idestatus}"/>
+                        <p:outputLabel value="#{bundle.EditEstatusLabel_estatus}" for="estatus" />
+                        <p:inputText id="estatus" value="#{estatusController.selected.estatus}" title="#{bundle.EditEstatusTitle_estatus}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{estatusController.update}" value="#{bundle.Save}" update="display,:EstatusListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstatusEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EstatusEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

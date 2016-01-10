@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="YacimientomaterialCreateDlg" widgetVar="YacimientomaterialCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateYacimientomaterialTitle}">
+            <h:form id="YacimientomaterialCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{yacimientomaterialController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateYacimientomaterialLabel_idyacimientomaterial}" for="idyacimientomaterial" />
+                        <p:inputText id="idyacimientomaterial" value="#{yacimientomaterialController.selected.idyacimientomaterial}" title="#{bundle.CreateYacimientomaterialTitle_idyacimientomaterial}" required="true" requiredMessage="#{bundle.CreateYacimientomaterialRequiredMessage_idyacimientomaterial}"/>
+                        <p:outputLabel value="#{bundle.CreateYacimientomaterialLabel_idyacimiento}" for="idyacimiento" />
+                        <p:selectOneMenu id="idyacimiento" value="#{yacimientomaterialController.selected.idyacimiento}" >
+                            <f:selectItems value="#{yacimientoController.itemsAvailableSelectOne}"
+                                           var="idyacimientoItem"
+                                           itemValue="#{idyacimientoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateYacimientomaterialLabel_idmaterial}" for="idmaterial" />
+                        <p:selectOneMenu id="idmaterial" value="#{yacimientomaterialController.selected.idmaterial}" >
+                            <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
+                                           var="idmaterialItem"
+                                           itemValue="#{idmaterialItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{yacimientomaterialController.create}" value="#{bundle.Save}" update="display,:YacimientomaterialListForm:datalist,:growl" oncomplete="handleSubmit(args,'YacimientomaterialCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="YacimientomaterialCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProductorTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ProductorListForm">
+                <p:panel header="#{bundle.ListProductorTitle}">
+                    <p:dataTable id="datalist" value="#{productorController.items}" var="item"
+                                 selectionMode="single" selection="#{productorController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.codigoproductor}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_codigoproductor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoproductor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_rif}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rif}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_razonsocial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.razonsocial}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_telefonos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_direccionfiscal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionfiscal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_idparroquia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idparroquia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_paginaweb}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paginaweb}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_aportesocial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aportesocial}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_fechainscripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechainscripcion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_idtransporte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtransporte}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_idcriterioproceso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcriterioproceso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_idclasificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idclasificacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_idnivelcontrato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idnivelcontrato}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductorTitle_idestatus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idestatus}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{productorController.prepareCreate}" update=":ProductorCreateForm" oncomplete="PF('ProductorCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ProductorViewForm" oncomplete="PF('ProductorViewDialog').show()" disabled="#{empty productorController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ProductorEditForm" oncomplete="PF('ProductorEditDialog').show()" disabled="#{empty productorController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{productorController.destroy}" update=":growl,datalist" disabled="#{empty productorController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

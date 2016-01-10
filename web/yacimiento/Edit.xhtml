@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="YacimientoEditDlg" widgetVar="YacimientoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditYacimientoTitle}">
+            <h:form id="YacimientoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{yacimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_codigoyacimiento}" for="codigoyacimiento" />
+                        <p:inputText id="codigoyacimiento" value="#{yacimientoController.selected.codigoyacimiento}" title="#{bundle.EditYacimientoTitle_codigoyacimiento}" required="true" requiredMessage="#{bundle.EditYacimientoRequiredMessage_codigoyacimiento}"/>
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_idlugar}" for="idlugar" />
+                        <p:inputText id="idlugar" value="#{yacimientoController.selected.idlugar}" title="#{bundle.EditYacimientoTitle_idlugar}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_cordenadan}" for="cordenadan" />
+                        <p:inputText id="cordenadan" value="#{yacimientoController.selected.cordenadan}" title="#{bundle.EditYacimientoTitle_cordenadan}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_cordenadae}" for="cordenadae" />
+                        <p:inputText id="cordenadae" value="#{yacimientoController.selected.cordenadae}" title="#{bundle.EditYacimientoTitle_cordenadae}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_areatotal}" for="areatotal" />
+                        <p:inputText id="areatotal" value="#{yacimientoController.selected.areatotal}" title="#{bundle.EditYacimientoTitle_areatotal}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_volumentotal}" for="volumentotal" />
+                        <p:inputText id="volumentotal" value="#{yacimientoController.selected.volumentotal}" title="#{bundle.EditYacimientoTitle_volumentotal}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_vidautil}" for="vidautil" />
+                        <p:inputText id="vidautil" value="#{yacimientoController.selected.vidautil}" title="#{bundle.EditYacimientoTitle_vidautil}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_areaexplotar}" for="areaexplotar" />
+                        <p:inputText id="areaexplotar" value="#{yacimientoController.selected.areaexplotar}" title="#{bundle.EditYacimientoTitle_areaexplotar}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_areareforestar}" for="areareforestar" />
+                        <p:inputText id="areareforestar" value="#{yacimientoController.selected.areareforestar}" title="#{bundle.EditYacimientoTitle_areareforestar}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_cantidadarboles}" for="cantidadarboles" />
+                        <p:inputText id="cantidadarboles" value="#{yacimientoController.selected.cantidadarboles}" title="#{bundle.EditYacimientoTitle_cantidadarboles}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_especies}" for="especies" />
+                        <p:inputText id="especies" value="#{yacimientoController.selected.especies}" title="#{bundle.EditYacimientoTitle_especies}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_nomina}" for="nomina" />
+                        <p:inputText id="nomina" value="#{yacimientoController.selected.nomina}" title="#{bundle.EditYacimientoTitle_nomina}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_maquinaria}" for="maquinaria" />
+                        <p:inputText id="maquinaria" value="#{yacimientoController.selected.maquinaria}" title="#{bundle.EditYacimientoTitle_maquinaria}" />
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_fechaAT}" for="fechaAT" />
+                        <p:calendar id="fechaAT" pattern="MM/dd/yyyy" value="#{yacimientoController.selected.fechaAT}" title="#{bundle.EditYacimientoTitle_fechaAT}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_fechaOT}" for="fechaOT" />
+                        <p:calendar id="fechaOT" pattern="MM/dd/yyyy" value="#{yacimientoController.selected.fechaOT}" title="#{bundle.EditYacimientoTitle_fechaOT}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_fechaPA}" for="fechaPA" />
+                        <p:calendar id="fechaPA" pattern="MM/dd/yyyy" value="#{yacimientoController.selected.fechaPA}" title="#{bundle.EditYacimientoTitle_fechaPA}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_fechaPE}" for="fechaPE" />
+                        <p:calendar id="fechaPE" pattern="MM/dd/yyyy" value="#{yacimientoController.selected.fechaPE}" title="#{bundle.EditYacimientoTitle_fechaPE}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_fechaincripcion}" for="fechaincripcion" />
+                        <p:calendar id="fechaincripcion" pattern="MM/dd/yyyy" value="#{yacimientoController.selected.fechaincripcion}" title="#{bundle.EditYacimientoTitle_fechaincripcion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_codigoproductor}" for="codigoproductor" />
+                        <p:selectOneMenu id="codigoproductor" value="#{yacimientoController.selected.codigoproductor}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productorController.itemsAvailableSelectOne}"
+                                           var="codigoproductorItem"
+                                           itemValue="#{codigoproductorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditYacimientoLabel_idparroquia}" for="idparroquia" />
+                        <p:selectOneMenu id="idparroquia" value="#{yacimientoController.selected.idparroquia}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{parroquiaController.itemsAvailableSelectOne}"
+                                           var="idparroquiaItem"
+                                           itemValue="#{idparroquiaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{yacimientoController.update}" value="#{bundle.Save}" update="display,:YacimientoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'YacimientoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="YacimientoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

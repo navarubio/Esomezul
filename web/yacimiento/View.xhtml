@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="YacimientoViewDlg" widgetVar="YacimientoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewYacimientoTitle}">
+            <h:form id="YacimientoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{yacimientoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_codigoyacimiento}"/>
+                        <h:outputText value="#{yacimientoController.selected.codigoyacimiento}" title="#{bundle.ViewYacimientoTitle_codigoyacimiento}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_idlugar}"/>
+                        <h:outputText value="#{yacimientoController.selected.idlugar}" title="#{bundle.ViewYacimientoTitle_idlugar}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_cordenadan}"/>
+                        <h:outputText value="#{yacimientoController.selected.cordenadan}" title="#{bundle.ViewYacimientoTitle_cordenadan}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_cordenadae}"/>
+                        <h:outputText value="#{yacimientoController.selected.cordenadae}" title="#{bundle.ViewYacimientoTitle_cordenadae}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_areatotal}"/>
+                        <h:outputText value="#{yacimientoController.selected.areatotal}" title="#{bundle.ViewYacimientoTitle_areatotal}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_volumentotal}"/>
+                        <h:outputText value="#{yacimientoController.selected.volumentotal}" title="#{bundle.ViewYacimientoTitle_volumentotal}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_vidautil}"/>
+                        <h:outputText value="#{yacimientoController.selected.vidautil}" title="#{bundle.ViewYacimientoTitle_vidautil}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_areaexplotar}"/>
+                        <h:outputText value="#{yacimientoController.selected.areaexplotar}" title="#{bundle.ViewYacimientoTitle_areaexplotar}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_areareforestar}"/>
+                        <h:outputText value="#{yacimientoController.selected.areareforestar}" title="#{bundle.ViewYacimientoTitle_areareforestar}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_cantidadarboles}"/>
+                        <h:outputText value="#{yacimientoController.selected.cantidadarboles}" title="#{bundle.ViewYacimientoTitle_cantidadarboles}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_especies}"/>
+                        <h:outputText value="#{yacimientoController.selected.especies}" title="#{bundle.ViewYacimientoTitle_especies}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_nomina}"/>
+                        <h:outputText value="#{yacimientoController.selected.nomina}" title="#{bundle.ViewYacimientoTitle_nomina}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_maquinaria}"/>
+                        <h:outputText value="#{yacimientoController.selected.maquinaria}" title="#{bundle.ViewYacimientoTitle_maquinaria}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_fechaAT}"/>
+                        <h:outputText value="#{yacimientoController.selected.fechaAT}" title="#{bundle.ViewYacimientoTitle_fechaAT}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_fechaOT}"/>
+                        <h:outputText value="#{yacimientoController.selected.fechaOT}" title="#{bundle.ViewYacimientoTitle_fechaOT}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_fechaPA}"/>
+                        <h:outputText value="#{yacimientoController.selected.fechaPA}" title="#{bundle.ViewYacimientoTitle_fechaPA}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_fechaPE}"/>
+                        <h:outputText value="#{yacimientoController.selected.fechaPE}" title="#{bundle.ViewYacimientoTitle_fechaPE}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_fechaincripcion}"/>
+                        <h:outputText value="#{yacimientoController.selected.fechaincripcion}" title="#{bundle.ViewYacimientoTitle_fechaincripcion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_codigoproductor}"/>
+                        <h:outputText value="#{yacimientoController.selected.codigoproductor}" title="#{bundle.ViewYacimientoTitle_codigoproductor}"/>
+                        <h:outputText value="#{bundle.ViewYacimientoLabel_idparroquia}"/>
+                        <h:outputText value="#{yacimientoController.selected.idparroquia}" title="#{bundle.ViewYacimientoTitle_idparroquia}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="YacimientoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

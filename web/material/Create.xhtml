@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterialCreateDlg" widgetVar="MaterialCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMaterialTitle}">
+            <h:form id="MaterialCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materialController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idmaterial}" for="idmaterial" />
+                        <p:inputText id="idmaterial" value="#{materialController.selected.idmaterial}" title="#{bundle.CreateMaterialTitle_idmaterial}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_idmaterial}"/>
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idgrupomat}" for="idgrupomat" />
+                        <p:inputText id="idgrupomat" value="#{materialController.selected.idgrupomat}" title="#{bundle.CreateMaterialTitle_idgrupomat}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idsubgrupomat}" for="idsubgrupomat" />
+                        <p:inputText id="idsubgrupomat" value="#{materialController.selected.idsubgrupomat}" title="#{bundle.CreateMaterialTitle_idsubgrupomat}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idespecificomat}" for="idespecificomat" />
+                        <p:inputText id="idespecificomat" value="#{materialController.selected.idespecificomat}" title="#{bundle.CreateMaterialTitle_idespecificomat}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idsubespecificomat}" for="idsubespecificomat" />
+                        <p:inputText id="idsubespecificomat" value="#{materialController.selected.idsubespecificomat}" title="#{bundle.CreateMaterialTitle_idsubespecificomat}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idgravable}" for="idgravable" />
+                        <p:inputText id="idgravable" value="#{materialController.selected.idgravable}" title="#{bundle.CreateMaterialTitle_idgravable}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idprecio}" for="idprecio" />
+                        <p:inputText id="idprecio" value="#{materialController.selected.idprecio}" title="#{bundle.CreateMaterialTitle_idprecio}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_descripcionmaterial}" for="descripcionmaterial" />
+                        <p:inputText id="descripcionmaterial" value="#{materialController.selected.descripcionmaterial}" title="#{bundle.CreateMaterialTitle_descripcionmaterial}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_idcriterioproceso}" for="idcriterioproceso" />
+                        <p:selectOneMenu id="idcriterioproceso" value="#{materialController.selected.idcriterioproceso}" >
+                            <f:selectItems value="#{criterioprocesoController.itemsAvailableSelectOne}"
+                                           var="idcriterioprocesoItem"
+                                           itemValue="#{idcriterioprocesoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{materialController.create}" value="#{bundle.Save}" update="display,:MaterialListForm:datalist,:growl" oncomplete="handleSubmit(args,'MaterialCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MaterialCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

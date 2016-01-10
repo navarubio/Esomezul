@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListYacimientoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="YacimientoListForm">
+                <p:panel header="#{bundle.ListYacimientoTitle}">
+                    <p:dataTable id="datalist" value="#{yacimientoController.items}" var="item"
+                                 selectionMode="single" selection="#{yacimientoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.codigoyacimiento}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_codigoyacimiento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoyacimiento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_idlugar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idlugar}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_cordenadan}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cordenadan}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_cordenadae}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cordenadae}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_areatotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areatotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_volumentotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.volumentotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_vidautil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vidautil}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_areaexplotar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areaexplotar}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_areareforestar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areareforestar}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_cantidadarboles}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidadarboles}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_especies}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.especies}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_nomina}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomina}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_maquinaria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.maquinaria}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_fechaAT}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaAT}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_fechaOT}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaOT}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_fechaPA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPA}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_fechaPE}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPE}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_fechaincripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaincripcion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_codigoproductor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoproductor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYacimientoTitle_idparroquia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idparroquia}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{yacimientoController.prepareCreate}" update=":YacimientoCreateForm" oncomplete="PF('YacimientoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":YacimientoViewForm" oncomplete="PF('YacimientoViewDialog').show()" disabled="#{empty yacimientoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":YacimientoEditForm" oncomplete="PF('YacimientoEditDialog').show()" disabled="#{empty yacimientoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{yacimientoController.destroy}" update=":growl,datalist" disabled="#{empty yacimientoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

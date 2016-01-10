@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:submenu label="#{bundle.RegMinero}" icon="ui-icon-clipboard">
+                            <p:menuitem value="Productor" outcome="/productor/List.xhtml" />
+                            <p:menuitem value="Representante" outcome="/representante/List.xhtml" />
+                            <p:menuitem value="Autorizado" outcome="/autorizado/List.xhtml" />
+                            <p:menuitem value="Yacimiento" outcome="/yacimiento/List.xhtml" />
+                            <p:menuitem value="Patio" outcome="/patio/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="#{bundle.Maintenance}" icon="ui-icon-wrench">
+                            <p:menuitem value="Criterioproceso" outcome="/criterioproceso/List.xhtml" />
+                            <p:menuitem value="Criteriouso" outcome="/criteriouso/List.xhtml" />
+                            <p:menuitem value="Empresa" outcome="/empresa/List.xhtml" />
+                            <p:menuitem value="Especificomaterial" outcome="/especificomaterial/List.xhtml" />
+                            <p:menuitem value="Estatus" outcome="/estatus/List.xhtml" />
+                            <p:menuitem value="Gravable" outcome="/gravable/List.xhtml" />
+                            <p:menuitem value="Grupomaterial" outcome="/grupomaterial/List.xhtml" />
+                            <p:menuitem value="Material" outcome="/material/List.xhtml" />
+                            <p:menuitem value="Materialuso" outcome="/materialuso/List.xhtml" />
+                            <p:menuitem value="Municipio" outcome="/municipio/List.xhtml" />
+                            <p:menuitem value="Nivelcontrato" outcome="/nivelcontrato/List.xhtml" />
+                            <p:menuitem value="Parroquia" outcome="/parroquia/List.xhtml" />                            
+                            <p:menuitem value="Subespecificomaterial" outcome="/subespecificomaterial/List.xhtml" />
+                            <p:menuitem value="Subgrupomaterial" outcome="/subgrupomaterial/List.xhtml" />
+                            <p:menuitem value="Subregion" outcome="/subregion/List.xhtml" />
+                            <p:menuitem value="Transporte" outcome="/transporte/List.xhtml" />
+                            <p:menuitem value="Unidadtributaria" outcome="/unidadtributaria/List.xhtml" />
+                            <p:menuitem value="Yacimientomaterial" outcome="/yacimientomaterial/List.xhtml" />
+                        </p:submenu> 
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="30">
+                <ui:insert name="footer"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>

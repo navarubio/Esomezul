@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpresaCreateDlg" widgetVar="EmpresaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmpresaTitle}">
+            <h:form id="EmpresaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_rif}" for="rif" />
+                        <p:inputText id="rif" value="#{empresaController.selected.rif}" title="#{bundle.CreateEmpresaTitle_rif}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_rif}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_razonsocial}" for="razonsocial" />
+                        <p:inputText id="razonsocial" value="#{empresaController.selected.razonsocial}" title="#{bundle.CreateEmpresaTitle_razonsocial}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_nombrecomercial}" for="nombrecomercial" />
+                        <p:inputText id="nombrecomercial" value="#{empresaController.selected.nombrecomercial}" title="#{bundle.CreateEmpresaTitle_nombrecomercial}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_direccionfiscal}" for="direccionfiscal" />
+                        <p:inputText id="direccionfiscal" value="#{empresaController.selected.direccionfiscal}" title="#{bundle.CreateEmpresaTitle_direccionfiscal}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_telefonos}" for="telefonos" />
+                        <p:inputText id="telefonos" value="#{empresaController.selected.telefonos}" title="#{bundle.CreateEmpresaTitle_telefonos}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_presidente}" for="presidente" />
+                        <p:inputText id="presidente" value="#{empresaController.selected.presidente}" title="#{bundle.CreateEmpresaTitle_presidente}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_siglasproductor}" for="siglasproductor" />
+                        <p:inputText id="siglasproductor" value="#{empresaController.selected.siglasproductor}" title="#{bundle.CreateEmpresaTitle_siglasproductor}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_serialproductor}" for="serialproductor" />
+                        <p:inputText id="serialproductor" value="#{empresaController.selected.serialproductor}" title="#{bundle.CreateEmpresaTitle_serialproductor}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_serialyacimiento}" for="serialyacimiento" />
+                        <p:inputText id="serialyacimiento" value="#{empresaController.selected.serialyacimiento}" title="#{bundle.CreateEmpresaTitle_serialyacimiento}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empresaController.create}" value="#{bundle.Save}" update="display,:EmpresaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EmpresaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmpresaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

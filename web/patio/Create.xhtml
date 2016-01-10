@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PatioCreateDlg" widgetVar="PatioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePatioTitle}">
+            <h:form id="PatioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{patioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePatioLabel_idpatio}" for="idpatio" />
+                        <p:inputText id="idpatio" value="#{patioController.selected.idpatio}" title="#{bundle.CreatePatioTitle_idpatio}" required="true" requiredMessage="#{bundle.CreatePatioRequiredMessage_idpatio}"/>
+                        <p:outputLabel value="#{bundle.CreatePatioLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{patioController.selected.descripcion}" title="#{bundle.CreatePatioTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreatePatioLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{patioController.selected.direccion}" title="#{bundle.CreatePatioTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreatePatioLabel_codigoproductor}" for="codigoproductor" />
+                        <p:selectOneMenu id="codigoproductor" value="#{patioController.selected.codigoproductor}" >
+                            <f:selectItems value="#{productorController.itemsAvailableSelectOne}"
+                                           var="codigoproductorItem"
+                                           itemValue="#{codigoproductorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePatioLabel_idparroquia}" for="idparroquia" />
+                        <p:selectOneMenu id="idparroquia" value="#{patioController.selected.idparroquia}" >
+                            <f:selectItems value="#{parroquiaController.itemsAvailableSelectOne}"
+                                           var="idparroquiaItem"
+                                           itemValue="#{idparroquiaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{patioController.create}" value="#{bundle.Save}" update="display,:PatioListForm:datalist,:growl" oncomplete="handleSubmit(args,'PatioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PatioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SubregionEditDlg" widgetVar="SubregionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSubregionTitle}">
+            <h:form id="SubregionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{subregionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSubregionLabel_idsubregion}" for="idsubregion" />
+                        <p:inputText id="idsubregion" value="#{subregionController.selected.idsubregion}" title="#{bundle.EditSubregionTitle_idsubregion}" required="true" requiredMessage="#{bundle.EditSubregionRequiredMessage_idsubregion}"/>
+                        <p:outputLabel value="#{bundle.EditSubregionLabel_subregion}" for="subregion" />
+                        <p:inputText id="subregion" value="#{subregionController.selected.subregion}" title="#{bundle.EditSubregionTitle_subregion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{subregionController.update}" value="#{bundle.Save}" update="display,:SubregionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SubregionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SubregionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
